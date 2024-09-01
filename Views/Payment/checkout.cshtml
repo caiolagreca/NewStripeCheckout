@@ -1,0 +1,25 @@
+﻿@model NewStripeApp.Models.Item
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buy cool new product</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <section>
+        <div class="product">
+            <img src="@Model.ImageUrl" alt="The cover of Stubborn Attachments" />
+            <div class="description">
+                <h3>@Model.Name</h3>
+                <h5>@Model.PriceId</h5>
+                <input type="hidden" asp-for="@Model.Id" />
+            </div>
+        </div>
+        <form action="/create-checkout-session" method="POST">
+            <button type="submit" id="checkout-button">Go to Payment</button>
+        </form>
+    </section>
+</body>
+</html>
